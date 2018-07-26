@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Web Scraping</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<style>
+		span {
+			color: orange
+		}
+
+		.tableauPlaceholder {
+			height: 100vh;
+			width: 100vw;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Web Scraping</h1>
+			</section>
+			<section>
+				<section>
+					<img src="https://cdn-images-1.medium.com/max/1280/1*JK7O6fp4ocU4z81c_g5wIw.png" alt="">
+				</section>
+				<section>
+					<img src="http://nerdist.com/wp-content/uploads/2015/09/robot-mr-hack.png" alt="">
+				</section>
+			</section>
+			<section>
+				<section>
+					<q>Web scraping, web harvesting, or web data extraction is data scraping used for extracting data from websites</q>
+					<p style="font-size: 0.5em">
+						<i>https://en.wikipedia.org/wiki/Web_scraping</i>
+					</p>
+				</section>
+				<section data-background-color="#ff0000">
+					<q>Web scraping is a technique used to extract data from websites through an
+						<strong style="color:orange">automated process</strong>.</q>
+				</section>
+			</section>
+			<section>
+				<h3>Why?</h3>
+				<p> GETTING DATA THAT IS OTHERWISE HARD TO GET TO </p>
+			</section>
+			<section>
+				<h3>Use Cases</h3>
+				<p style="font-size: 0.5em">There are many reasons and use cases why you would want to scrape data:</p>
+				<p> Scrape pages of a e-retailer to spot if some of the clothes you want to buy got discounted</p>
+			</section>
+			<section>
+				<p> Scrape pages of a sports website to get the latest results </p>
+				<p> Compare prices of several clothes brands by scraping their pages </p>
+			</section>
+			<section>
+				<p> Price of the flight tickets can vary during the day. One could crawl the travel website and get alarmed once the price
+					was lowered </p>
+				<p> Analyze the action websites to answer the question if starting bid should be low or high to attract more bidders or if
+					the longer auction correlates with a higher end bid </p>
+			</section>
+			<section>
+				<img src="https://media.giphy.com/media/11FRmJRii0I8iA/giphy.gif" alt="">
+			</section>
+			<section>
+				<h3>When do I use web scraping?</h3>
+				<p>For when the website or data provider doesn't give me an
+					<span>API interface</span> to interrogate the data </p>
+				<p>The data is presented in a static way: either a table or in a paragraph</p>
+				<p>and the content is not
+					<span>dynamically rendered</span>
+				</p>
+			</section>
+			<section>
+				<h3>So if it is dynamically rendered...</h3>
+				<img src="https://media.giphy.com/media/gh1PcN7Agxlcc/giphy.gif" alt="">
+			</section>
+			<section>
+				<p>There is no
+					<span>universal solution</span> for web scraping because the way data is stored on each website is usually specific to that
+					site. In fact, if you want to scrape the data, you need to understand the website’s structure and either build your
+					own solution or use a highly customizable one.</p>
+			</section>
+			<section>
+				<section>
+					So... what we are going to do (and learn) today is twofold
+				</section>
+				<section>
+					1. Web Scraping techniques & approaches
+				</section>
+				<section>
+					2. REGEX & an intro to Web Technologies
+				</section>
+			</section>
+			<section>
+				<img src="img/google.png" alt="">
+			</section>
+			<section>
+				We are of course not going to use Python or any other programming language to grab data from a webpage. There are also some
+				<span>automation tools or crawlers (such as Parsehub & ImportIO)</span>. If we have time we could look at these tools.
+			</section>
+			<section>
+				<section>
+					<h3>What are the components of a website?</h3>
+				</section>
+				<section>
+					1. HTML
+				</section>
+				<section>
+					2. CSS
+				</section>
+				<section>
+					3. JavaScript
+				</section>
+				<section>
+					<img src="http://tutorial.techaltum.com/images/html-css.jpg" alt="">
+				</section>
+			</section>
+
+
+			<section>Let's look at an example I built a while ago
+			</section>
+			<section>
+				<img src="https://media.giphy.com/media/hPsiUPKPsYi9a/giphy.gif" alt="">
+			</section>
+			<section>
+				<div class='tableauPlaceholder' id='viz1531813219764' style='position: relative'>
+					<noscript>
+						<a href='#'>
+							<img alt='Hack the weather - Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;It&#47;ItsNOTAlwaysSunnyinTheNetherlandsAnalysing10YearsofDutchWeatherData&#47;Hacktheweather-Dashboard&#47;1_rss.png'
+							 style='border: none' />
+						</a>
+					</noscript>
+					<object class='tableauViz' style='display:none;'>
+						<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+						<param name='embed_code_version' value='3' />
+						<param name='site_root' value='' />
+						<param name='name' value='ItsNOTAlwaysSunnyinTheNetherlandsAnalysing10YearsofDutchWeatherData&#47;Hacktheweather-Dashboard'
+						/>
+						<param name='tabs' value='no' />
+						<param name='toolbar' value='yes' />
+						<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;It&#47;ItsNOTAlwaysSunnyinTheNetherlandsAnalysing10YearsofDutchWeatherData&#47;Hacktheweather-Dashboard&#47;1.png'
+						/>
+						<param name='animate_transition' value='yes' />
+						<param name='display_static_image' value='yes' />
+						<param name='display_spinner' value='yes' />
+						<param name='display_overlay' value='yes' />
+						<param name='display_count' value='yes' />
+					</object>
+				</div>
+
+			</section>
+			<section>
+				<h1>However...</h1>
+				<img src="https://media.giphy.com/media/2D8g2rXcWx1DO/giphy.gif" alt="">
+			</section>
+			<section>
+				<img src="https://media.giphy.com/media/3oKIPwOqCkW4YwZDIA/giphy.gif" alt="">
+			</section>
+			<section>
+				<h1>robots.txt</h1>
+			</section>
+			<section>
+				<p style="font-size: 0.5em"> The web is known as an open place – but that would be just an exaggeration if you take a closer look. The web that we
+					know is actually just the tip of a huge iceberg. Search engine crawlers have access only to the
+					<span>‘Surface web’</span> which is a name for the smaller percentage of web where crawlers can go. The rest of the websites
+					<span>disallow crawling by stating it in their robots.txt file.</span> Robots.txt is a file used by websites to let ‘bots’
+					know if or how the site should be crawled and indexed. Many sites simply disallow crawling, meaning the site shouldn’t
+					be crawled by search engines or other crawler bots. When you are trying to extract data from the web, it is critical
+					to understand what robots.txt is and how to respect it to avoid legal ramifications.</p>
+				<p style="font-size: 0.5em">
+					<i>
+						<a href="https://www.promptcloud.com/blog/how-to-read-and-respect-robots-file">https://www.promptcloud.com/blog/how-to-read-and-respect-robots-file</a>
+					</i>
+				</p>
+
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script type='text/javascript'>                    var divElement = document.getElementById('viz1531813219764'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100vw'; vizElement.style.height = '100vh'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		//Reveal.configure({ slideNumber: true });
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
